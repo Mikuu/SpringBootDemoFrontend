@@ -1,8 +1,15 @@
 ---
-server:
-  port: 8080
-  contextPath: /SpringDemo
----
 spring:
   profiles: local, default
+server:
+  contextPath: /SpringDemo
+  address: localhost
+  port: 8001
 
+---
+spring:
+  profiles: mock
+server:
+  contextPath: /SpringDemo
+  address: localhost
+  port: 8001
