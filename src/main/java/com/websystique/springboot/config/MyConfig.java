@@ -1,17 +1,15 @@
 package com.websystique.springboot.config;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
  * Created by Biao on 02/11/2017.
  */
 @Component
-@PropertySource("classpath:application-local.properties")
+@ConfigurationProperties(prefix="backend")
 public class MyConfig {
 
-    @Value("${backend.environment}")
     private String environment;
 
     public String getEnvironment() {
