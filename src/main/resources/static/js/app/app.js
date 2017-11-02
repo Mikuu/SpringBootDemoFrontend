@@ -1,8 +1,8 @@
 var app = angular.module('crudApp',['ui.router','ngStorage']);
 
 app.constant('urls', {
-    BASE: 'http://localhost:8000/SpringDemo',
-    USER_SERVICE_API : 'http://localhost:8000/SpringDemo/api/user/'
+    BASE: 'http://'+env.host+':'+env.port+'/SpringDemo',
+    USER_SERVICE_API : 'http://'+env.host+':'+env.port+'/SpringDemo/api/user/'
 });
 
 app.config(['$stateProvider', '$urlRouterProvider',

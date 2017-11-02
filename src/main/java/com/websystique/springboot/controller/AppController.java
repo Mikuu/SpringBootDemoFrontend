@@ -18,9 +18,12 @@ public class AppController {
 
 	@RequestMapping("/")
 	String home(ModelMap modal) {
-		System.out.println("FBI > "+this.myConfig.getEnvironment());
 		modal.addAttribute("title","Spring Demo Frontend");
-		return "index";
+		switch (this.myConfig.getEnvironment()) {
+			case "local": return  "index-local";
+			case "mock": return  "index-mock";
+		}
+		return "index-local";
 	}
 
 	@RequestMapping("/partials/{page}")
