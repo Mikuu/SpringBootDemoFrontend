@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 //@Import(JpaConfiguration.class)
-@SpringBootApplication(scanBasePackages={"com.websystique.springboot"})// same as @Configuration @EnableAutoConfiguration @ComponentScan
+@SpringBootApplication()// same as @Configuration @EnableAutoConfiguration @ComponentScan
 public class SpringDemo {
 
 	public static void main(String[] args) {
