@@ -10,13 +10,22 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix="backend")
 public class MyConfig {
 
-    private String environment;
+    private String host;
+    private String port;
 
-    public String getEnvironment() {
-        return environment;
+    public String getHost() {
+        return host;
     }
 
-    public void setEnvironment(String environment) {
-        this.environment = environment;
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
     }
 }

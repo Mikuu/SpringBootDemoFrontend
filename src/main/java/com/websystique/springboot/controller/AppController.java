@@ -17,13 +17,11 @@ public class AppController {
 	}
 
 	@RequestMapping("/")
-	String home(ModelMap modal) {
+	String index(ModelMap modal) {
 		modal.addAttribute("title","Spring Demo Frontend");
-		switch (this.myConfig.getEnvironment()) {
-			case "local": return  "index-local";
-			case "mock": return  "index-mock";
-		}
-		return "index-local";
+		modal.addAttribute("host",myConfig.getHost());
+		modal.addAttribute("port",myConfig.getPort());
+		return "index";
 	}
 
 	@RequestMapping("/partials/{page}")
