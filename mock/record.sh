@@ -1,1 +1,1 @@
-java -jar wiremock-standalone-2.10.1.jar --port 3000 --root-dir mock-data  --record-mappings  --verbose --proxy-all="http://localhost:8000"
+java -jar wiremock-standalone-2.8.0.jar --port 3000 --verbose --proxy-all="http://localhost:8000" --record-mappings --root-dir=recording

@@ -6,7 +6,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-
+apply from: 'gradle/mock-server.gradle'
 
 description = """SpringDemoExample"""
 

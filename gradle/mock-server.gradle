@@ -1,0 +1,37 @@
+import groovy.transform.Field
+
+@Field String DEFAULT_SERVER = 'backend-server'
+@Field String DEFAULT_MODE = 'playback'
+@Field def final CONFIG = [
+        'backend-server': [
+                port: 3000,
+                proxy: 'http://localhost:8000/'
+        ]
+]
+
+task mock(type: Exec) {
+    workingDir 'mock'
+    commandLine 'java', '-jar', 'wiremock-standalone-2.10.1.jar'
+
+    def server = project.hasProperty('server') ? project.property('server') : DEFAULT_SERVER
+    def mode = project.hasProperty('mode') ? project.property('mode') : DEFAULT_MODE
+
+    def info = CONFIG.get(server)
+    if (info == null) {
+        throw new RuntimeException("${server} is not supported")
+    }
+
+    switch (mode) {
+        case 'playback':
+            args "--port=${info['port']}", "--root-dir=${server}/real-data", "--verbose"
+            break
+        case 'playback:fake':
+            args "--port=${info['port']}", "--root-dir=${server}/fake-data", "--verbose"
+            break
+        case 'record':
+            args "--port=${info['port']}", "--root-dir=${server}/record", "--verbose", "--proxy-all=${info['proxy']}"
+            break
+        default:
+            break
+    }
+}
