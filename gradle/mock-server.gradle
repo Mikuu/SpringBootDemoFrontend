@@ -29,7 +29,7 @@ task mock(type: Exec) {
             args "--port=${info['port']}", "--root-dir=${server}/fake-data", "--verbose"
             break
         case 'record':
-            args "--port=${info['port']}", "--root-dir=${server}/record", "--verbose", "--proxy-all=${info['proxy']}"
+            args "--port=${info['port']}", "--root-dir=${server}/record", "--verbose", "--record-mappings", "--proxy-all=${info['proxy']}"
             break
         default:
             break
