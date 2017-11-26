@@ -11,7 +11,7 @@ import groovy.transform.Field
 
 task mock(type: Exec) {
     workingDir 'mock'
-    commandLine 'java', '-jar', 'wiremock-standalone-2.10.1.jar'
+    commandLine 'java', '-jar', 'wiremock-standalone-2.5.0.jar'
 
     def server = project.hasProperty('server') ? project.property('server') : DEFAULT_SERVER
     def mode = project.hasProperty('mode') ? project.property('mode') : DEFAULT_MODE
@@ -23,13 +23,21 @@ task mock(type: Exec) {
 
     switch (mode) {
         case 'playback':
-            args "--port=${info['port']}", "--root-dir=${server}/real-data", "--verbose"
+            args "--port=${info['port']}",
+                    "--root-dir=${server}/real-data",
+                    "--verbose"
             break
         case 'playback:fake':
-            args "--port=${info['port']}", "--root-dir=${server}/fake-data", "--verbose"
+            args "--port=${info['port']}",
+                    "--root-dir=${server}/fake-data",
+                    "--verbose"
             break
         case 'record':
-            args "--port=${info['port']}", "--root-dir=${server}/record", "--verbose", "--record-mappings", "--proxy-all=${info['proxy']}"
+            args "--port=${info['port']}",
+                    "--root-dir=${server}/record",
+                    "--verbose",
+                    "--record-mappings",
+                    "--proxy-all=${info['proxy']}"
             break
         default:
             break
